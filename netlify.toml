@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback — serve index.html for all client-side routes
+[[redirects]]
+  from = "/open-notify/*"
+  to = "http://api.open-notify.org/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/newsapi/*"
+  to = "https://newsapi.org/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/hf-router/*"
+  to = "https://router.huggingface.co/:splat"
+  status = 200
+  force = true
+
+# SPA client-side routing fallback (must be last)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
